@@ -1,6 +1,6 @@
 # Renaissance Coffee Website
 
-The official website for Renaissance Coffee, a family-owned coffee shop at SFU Burnaby since 1996.
+A project website for Renaissance Coffee, a family-owned coffee shop at SFU Burnaby since 1996.
 
 ## Tech Stack
 
