@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const milestones = [
+  { year: "1996", text: "Parminder Parhar opens Renaissance Coffee in the AQ Building at SFU Burnaby. A small stand with big dreams." },
+  { year: "Early 2000s", text: "Word spreads. The shop becomes the go-to spot for students, faculty, and staff. Parminder's wife Kamaljit joins the business." },
+  { year: "2010s", text: "The menu grows — samosas, butter chicken, and fresh-baked goods join the lineup. Regulars call it their \"home away from home.\"" },
+  { year: "2020", text: "Through the pandemic, Renaissance stays open to serve the campus community. Adaptability and heart keep the doors open." },
+  { year: "2024", text: "Launch of the Renaissance Coffee student scholarship endowment, supporting SFU students in financial need." },
+  { year: "Feb 2026", text: "30th anniversary celebration. Three decades of coffee, community, and connection at SFU Burnaby." },
+];
+---
+
+<BaseLayout title="Our Story" description="The story of Renaissance Coffee — how Parminder Parhar built a beloved coffee shop at SFU Burnaby over 30 years.">
+  <!-- Hero -->
+  <section class="relative bg-coffee text-cream overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1600&q=80')] bg-cover bg-center opacity-25"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 py-20 sm:py-24 text-center">
+      <h1 class="font-heading text-4xl sm:text-5xl font-bold mb-4">Our Story</h1>
+      <p class="text-lg text-cream/80 max-w-2xl mx-auto">
+        How a family dream became a 30-year SFU institution.
+      </p>
+    </div>
+  </section>
+
+  <!-- Story Content -->
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+    <div class="prose-custom space-y-6 text-espresso-light leading-relaxed">
+      <p class="text-lg text-espresso font-medium">
+        In 1996, Parminder Parhar had a simple idea: open a coffee shop on the SFU Burnaby campus
+        that felt like home. No corporate playbook, no franchise formula — just good coffee,
+        honest food, and a warm welcome for everyone who walked through the door.
+      </p>
+      <p>
+        What started as a small stand in the Academic Quadrangle building has grown into something
+        much bigger. Over three decades, Renaissance Coffee has served hundreds of thousands of
+        cups of coffee, fed countless students through exam season, and become woven into the
+        fabric of SFU.
+      </p>
+      <p>
+        Parminder's wife Kamaljit is an essential part of the operation, bringing her own warmth
+        and skill to the kitchen. Together, they've built more than a business — they've built a
+        community gathering place. The samosas are made from family recipes. The baked goods are
+        prepared fresh every morning. The butter chicken has a following of its own.
+      </p>
+      <p>
+        In February 2026, Renaissance Coffee celebrated its 30th anniversary — a milestone that
+        speaks to the loyalty of the SFU community and the dedication of the Parhar family.
+      </p>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="bg-cream-dark py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="font-heading text-3xl font-semibold text-coffee mb-10 text-center">30 Years at a Glance</h2>
+      <div class="space-y-0">
+        {milestones.map((m, i) => (
+          <div class="flex gap-4 sm:gap-6">
+            <div class="flex flex-col items-center">
+              <div class={`w-3 h-3 rounded-full shrink-0 mt-1.5 ${i === milestones.length - 1 ? 'bg-forest' : 'bg-caramel'}`}></div>
+              {i < milestones.length - 1 && <div class="w-px flex-1 bg-caramel/30"></div>}
+            </div>
+            <div class="pb-8">
+              <span class="text-sm font-semibold text-coffee uppercase tracking-wide">{m.year}</span>
+              <p class="text-espresso-light mt-1">{m.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Placeholders -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+    <h2 class="font-heading text-3xl font-semibold text-coffee mb-8 text-center">Through the Years</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      <div class="aspect-square rounded-lg bg-cream-dark overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&h=400&fit=crop" alt="Coffee shop interior" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="aspect-square rounded-lg bg-cream-dark overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=400&fit=crop" alt="Coffee being prepared" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="aspect-square rounded-lg bg-cream-dark overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=400&h=400&fit=crop" alt="Fresh baked goods" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="aspect-square rounded-lg bg-cream-dark overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=400&fit=crop" alt="Cafe seating area" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="aspect-square rounded-lg bg-cream-dark overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1559305616-3f99cd43e353?w=400&h=400&fit=crop" alt="Espresso machine" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="aspect-square rounded-lg bg-cream-dark overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=400&h=400&fit=crop" alt="Coffee shop atmosphere" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-16 text-center">
+    <p class="text-espresso-light mb-4">Come be part of the next chapter.</p>
+    <a href="/contact" class="inline-block bg-coffee text-cream font-semibold px-8 py-3 rounded-full hover:bg-coffee-light transition-colors">
+      Visit Us
+    </a>
+  </section>
+</BaseLayout>

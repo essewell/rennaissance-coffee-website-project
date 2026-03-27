@@ -1,0 +1,24 @@
+---
+import yaml from 'js-yaml';
+import { readFileSync } from 'fs';
+
+const hoursFile = readFileSync('src/data/hours.yml', 'utf-8');
+const hoursData = yaml.load(hoursFile) as { schedule: { day: string; open: string; close: string }[] };
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<div class={compact ? "space-y-1 text-sm" : ""}>
+  {hoursData.schedule.map(entry => (
+    <div class={`flex justify-between ${compact ? "py-0.5" : "py-2 border-b border-caramel/10"}`}>
+      <span class={`font-medium ${compact ? "text-cream/70" : "text-espresso"}`}>{entry.day}</span>
+      <span class={compact ? "text-cream/50" : "text-espresso-light"}>
+        {entry.open === "Closed" ? "Closed" : `${entry.open} – ${entry.close}`}
+      </span>
+    </div>
+  ))}
+</div>

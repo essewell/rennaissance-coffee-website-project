@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MenuCategory from '../components/MenuCategory.astro';
+import yaml from 'js-yaml';
+import { readFileSync } from 'fs';
+
+const menuFile = readFileSync('src/data/menu.yml', 'utf-8');
+const menuData = yaml.load(menuFile) as {
+  categories: { name: string; id: string; items: { name: string; price: string; description?: string }[] }[]
+};
+---
+
+<BaseLayout title="Menu" description="Browse our menu — coffee, bagels, samosas, butter chicken, baked goods, and seasonal specials at Renaissance Coffee, SFU Burnaby.">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <div class="text-center mb-10">
+      <h1 class="font-heading text-4xl sm:text-5xl font-bold text-coffee mb-3">Our Menu</h1>
+      <p class="text-espresso-light max-w-xl mx-auto">
+        Fresh coffee, homemade food, and baked goods made with care.
+        Everything priced for students — because we remember being one.
+      </p>
+    </div>
+
+    <!-- Category Navigation -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10">
+      {menuData.categories.map(cat => (
+        <a
+          href={`#${cat.id}`}
+          class="px-4 py-1.5 rounded-full text-sm font-medium border border-caramel/30 text-espresso-light hover:bg-caramel/15 hover:text-coffee transition-colors"
+        >
+          {cat.name}
+        </a>
+      ))}
+    </div>
+
+    <!-- Menu Sections -->
+    <div class="space-y-6">
+      {menuData.categories.map(cat => (
+        <div id={cat.id}>
+          <MenuCategory name={cat.name} id={cat.id} items={cat.items} />
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-12 text-center bg-cream-dark rounded-xl p-6 border border-caramel/15">
+      <p class="text-espresso-light mb-3">Ready to order?</p>
+      <a href="/order" class="inline-block bg-coffee text-cream font-semibold px-6 py-2.5 rounded-full hover:bg-coffee-light transition-colors">
+        Order for Pickup
+      </a>
+    </div>
+  </div>
+</BaseLayout>

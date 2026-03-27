@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import yaml from 'js-yaml';
+import { readFileSync } from 'fs';
+
+const infoFile = readFileSync('src/data/info.yml', 'utf-8');
+const info = yaml.load(infoFile) as { phone: string; square_order_url?: string };
+
+const hasSquareOrder = info.square_order_url && info.square_order_url.length > 0;
+---
+
+<BaseLayout title="Order Online" description="Order Renaissance Coffee for pickup. Coffee, food, and baked goods ready when you are.">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 py-16 text-center">
+    <div class="bg-cream-dark rounded-2xl p-8 sm:p-12 border border-caramel/20">
+      <div class="w-16 h-16 bg-caramel/20 rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg class="w-8 h-8 text-coffee" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+      </div>
+
+      <h1 class="font-heading text-3xl sm:text-4xl font-bold text-coffee mb-4">Order Online</h1>
+
+      {hasSquareOrder ? (
+        <>
+          <p class="text-espresso-light mb-8 max-w-md mx-auto">
+            Order ahead for pickup — your food and drinks will be ready when you arrive.
+          </p>
+          <a
+            href={info.square_order_url}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 bg-coffee text-cream font-semibold px-8 py-3 rounded-full hover:bg-coffee-light transition-colors mb-4"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+            Start Your Order
+          </a>
+          <p class="text-sm text-espresso-light/60">
+            Pickup at the AQ Building, SFU Burnaby
+          </p>
+        </>
+      ) : (
+        <>
+          <p class="text-espresso-light mb-8 max-w-md mx-auto">
+            Online ordering is coming soon! In the meantime, you can call us to place an order for pickup.
+          </p>
+          <a
+            href="tel:+17787824455"
+            class="inline-flex items-center gap-2 bg-coffee text-cream font-semibold px-8 py-3 rounded-full hover:bg-coffee-light transition-colors mb-6"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+            Call (778) 782-4455
+          </a>
+          <p class="text-sm text-espresso-light/60">
+            Mon–Thu 6am–7:30pm · Fri 6am–5:30pm
+          </p>
+        </>
+      )}
+    </div>
+
+    <!-- Pickup Info -->
+    <div class="mt-10 text-left">
+      <h2 class="font-heading text-xl font-semibold text-coffee mb-4 text-center">Pickup Location</h2>
+      <div class="bg-cream-dark rounded-xl p-6 border border-caramel/15">
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-coffee shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+          <div class="text-espresso-light">
+            <p class="font-medium text-espresso">Renaissance Coffee</p>
+            <p>Academic Quadrangle (AQ) Building</p>
+            <p>SFU Burnaby Campus</p>
+            <p>8888 University Dr E, Burnaby, BC</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gift Cards Teaser -->
+    <div class="mt-10 bg-forest/10 rounded-xl p-6 border border-forest/20">
+      <h3 class="font-heading text-lg font-semibold text-forest mb-2">Gift Cards</h3>
+      <p class="text-sm text-espresso-light mb-3">
+        Want to treat a friend? E-gift cards will be available soon. Stay tuned!
+      </p>
+    </div>
+  </div>
+</BaseLayout>

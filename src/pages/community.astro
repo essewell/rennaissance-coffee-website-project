@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Community" description="Renaissance Coffee's community impact — student scholarships, SFU partnerships, and 30 years of giving back.">
+  <!-- Hero -->
+  <section class="relative bg-forest text-cream overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600&q=80')] bg-cover bg-center opacity-20"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 py-20 sm:py-24 text-center">
+      <h1 class="font-heading text-4xl sm:text-5xl font-bold mb-4">Community</h1>
+      <p class="text-lg text-cream/80 max-w-2xl mx-auto">
+        Giving back to the community that has supported us for 30 years.
+      </p>
+    </div>
+  </section>
+
+  <!-- Scholarship -->
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+    <h2 class="font-heading text-3xl font-semibold text-coffee mb-6">Student Scholarship Endowment</h2>
+    <div class="space-y-4 text-espresso-light leading-relaxed">
+      <p>
+        After three decades at SFU, we know that students are the lifeblood of this campus.
+        Many of our regulars are working part-time jobs, taking out loans, and stretching every
+        dollar just to get through school. We've seen it firsthand — and we wanted to do more
+        than just serve them coffee.
+      </p>
+      <p>
+        In 2024, we established the Renaissance Coffee Student Scholarship Endowment at SFU,
+        providing financial support to students in need. It's our way of investing in the next
+        generation — the same generation that has invested in us with their loyalty and trust
+        over the years.
+      </p>
+      <p>
+        The endowment is funded through a portion of our proceeds and generous contributions
+        from community members who believe in making education accessible.
+      </p>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-10">
+      <div class="bg-cream-dark rounded-xl p-5 text-center border border-caramel/15">
+        <div class="font-heading text-3xl font-bold text-forest">30</div>
+        <div class="text-sm text-espresso-light mt-1">Years at SFU</div>
+      </div>
+      <div class="bg-cream-dark rounded-xl p-5 text-center border border-caramel/15">
+        <div class="font-heading text-3xl font-bold text-forest">1996</div>
+        <div class="text-sm text-espresso-light mt-1">Year Founded</div>
+      </div>
+      <div class="bg-cream-dark rounded-xl p-5 text-center border border-caramel/15 col-span-2 sm:col-span-1">
+        <div class="font-heading text-3xl font-bold text-forest">1</div>
+        <div class="text-sm text-espresso-light mt-1">Scholarship Endowment</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coffee Day -->
+  <section class="bg-cream-dark py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="font-heading text-3xl font-semibold text-coffee mb-6">Coffee Day & Community Events</h2>
+      <div class="space-y-4 text-espresso-light leading-relaxed">
+        <p>
+          Every year, we host events that bring the SFU community together. Our annual Coffee Day
+          celebration is a campus favourite — free tastings, live music, and a chance for students,
+          staff, and faculty to connect outside the lecture hall.
+        </p>
+        <p>
+          We also participate in campus events, welcome new students during orientation week,
+          and open our doors to student groups looking for a meeting space. Renaissance has always
+          been more than a transaction — it's a relationship.
+        </p>
+      </div>
+
+      <div class="mt-8 bg-forest/10 rounded-xl p-6 border border-forest/20">
+        <h3 class="font-heading text-xl font-semibold text-forest mb-2">Want to partner with us?</h3>
+        <p class="text-espresso-light text-sm mb-4">
+          We love working with student organizations, campus groups, and community initiatives.
+          Reach out and let's see how we can collaborate.
+        </p>
+        <a href="/contact" class="inline-block bg-forest text-cream font-medium px-5 py-2 rounded-full text-sm hover:bg-forest-light transition-colors">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="aspect-video rounded-lg overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&h=400&fit=crop" alt="Community gathering" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="aspect-video rounded-lg overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop" alt="Students collaborating" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

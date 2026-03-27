@@ -1,0 +1,19 @@
+---
+interface Props {
+  name: string;
+  price: string;
+  description?: string;
+}
+
+const { name, price, description } = Astro.props;
+---
+
+<div class="flex justify-between items-start gap-4 py-3">
+  <div class="flex-1 min-w-0">
+    <h4 class="font-medium text-espresso">{name}</h4>
+    {description && (
+      <p class="text-sm text-espresso-light/70 mt-0.5">{description}</p>
+    )}
+  </div>
+  <span class="font-heading font-semibold text-coffee whitespace-nowrap">${price}</span>
+</div>

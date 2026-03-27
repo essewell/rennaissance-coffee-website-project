@@ -1,0 +1,98 @@
+---
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/menu", label: "Menu" },
+  { href: "/story", label: "Our Story" },
+  { href: "/community", label: "Community" },
+  { href: "/contact", label: "Contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="sticky top-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-caramel/20">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2">
+        <span class="font-heading text-xl sm:text-2xl font-bold text-coffee">Renaissance Coffee</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-6">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class={`text-sm font-medium transition-colors hover:text-coffee ${
+              currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
+                ? "text-coffee"
+                : "text-espresso-light"
+            }`}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href="/order"
+          class="bg-coffee text-cream text-sm font-medium px-5 py-2 rounded-full hover:bg-coffee-light transition-colors"
+        >
+          Order Online
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 text-coffee"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col gap-1">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+              currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
+                ? "bg-caramel/15 text-coffee"
+                : "text-espresso-light hover:bg-cream-dark"
+            }`}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href="/order"
+          class="mt-2 bg-coffee text-cream text-sm font-medium px-5 py-2.5 rounded-full text-center hover:bg-coffee-light transition-colors"
+        >
+          Order Online
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const icon = document.getElementById('menu-icon');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!isOpen));
+
+    if (isOpen) {
+      icon?.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+    } else {
+      icon?.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+    }
+  });
+</script>

@@ -1,0 +1,17 @@
+name: "Renaissance Coffee"
+tagline: "30 Years of Coffee & Community at SFU"
+address:
+  building: "Academic Quadrangle (AQ) Building"
+  campus: "Simon Fraser University"
+  city: "Burnaby, BC"
+phone: "(778) 782-4455"
+email: ""
+instagram: "@renaissance.coffee"
+instagram_url: "https://www.instagram.com/renaissance.coffee/"
+square_order_url: ""
+founded: 1996
+owners:
+  - name: "Parminder Parhar"
+    role: "Owner"
+  - name: "Kamaljit Parhar"
+    role: "Co-owner"

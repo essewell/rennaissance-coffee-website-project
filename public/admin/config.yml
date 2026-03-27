@@ -1,0 +1,93 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "menu"
+    label: "Menu Items"
+    file: "src/data/menu.yml"
+    description: "Manage menu categories and items"
+    fields:
+      - name: "categories"
+        label: "Categories"
+        widget: "list"
+        fields:
+          - name: "name"
+            label: "Category Name"
+            widget: "string"
+          - name: "id"
+            label: "URL ID"
+            widget: "string"
+          - name: "items"
+            label: "Items"
+            widget: "list"
+            fields:
+              - name: "name"
+                label: "Item Name"
+                widget: "string"
+              - name: "price"
+                label: "Price"
+                widget: "string"
+              - name: "description"
+                label: "Description"
+                widget: "string"
+                required: false
+
+  - name: "hours"
+    label: "Business Hours"
+    file: "src/data/hours.yml"
+    description: "Update opening and closing times"
+    fields:
+      - name: "schedule"
+        label: "Schedule"
+        widget: "list"
+        fields:
+          - name: "day"
+            label: "Day"
+            widget: "string"
+          - name: "open"
+            label: "Opens"
+            widget: "string"
+          - name: "close"
+            label: "Closes"
+            widget: "string"
+
+  - name: "info"
+    label: "Site Info"
+    file: "src/data/info.yml"
+    description: "Contact details and business information"
+    fields:
+      - name: "name"
+        label: "Business Name"
+        widget: "string"
+      - name: "tagline"
+        label: "Tagline"
+        widget: "string"
+      - name: "phone"
+        label: "Phone Number"
+        widget: "string"
+      - name: "instagram"
+        label: "Instagram Handle"
+        widget: "string"
+      - name: "instagram_url"
+        label: "Instagram URL"
+        widget: "string"
+      - name: "square_order_url"
+        label: "Square Online Ordering URL"
+        widget: "string"
+        required: false
+
+  - name: "pages"
+    label: "Pages"
+    description: "Edit page content"
+    files:
+      - name: "story"
+        label: "Our Story"
+        file: "src/pages/story.astro"
+        fields:
+          - name: "body"
+            label: "Content"
+            widget: "markdown"
